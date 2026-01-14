@@ -16,10 +16,48 @@
     }
 
     section {
-      scroll-margin-top: 96px;
+      scroll-margin-top: 400px;
+      /* Mobile-friendly default */
+    }
+
+    /* Larger scroll margin for desktop */
+    @media (min-width: 640px) {
+      section {
+        scroll-margin-top: 96px;
+      }
     }
 
     /* avoid sticky header overlap */
+
+    /* Mobile menu transitions */
+    .mobile-menu {
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    .mobile-menu.active {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    /* Hamburger icon animation */
+    .hamburger-line {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .hamburger.active .hamburger-line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .hamburger-line:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
   </style>
 </head>
 
@@ -30,27 +68,74 @@
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
       <div class="min-w-0">
         <h1 class="text-lg sm:text-xl font-semibold">
-          ICME 2026 Academic Text-to-Music Generation Grand Challenge
+          ICME 2026 Grand Challenge on Academic Text-to-Music Generation
         </h1>
       </div>
 
       <!-- Navigation -->
       <nav class="hidden sm:flex items-center gap-6 text-sm font-medium whitespace-nowrap">
-        <a href="#description" class="hover:text-blue-600">Description</a>
-        <a href="#evaluation" class="hover:text-blue-600">Evaluation</a>
-        <a href="#submission" class="hover:text-blue-600">Submission</a>
-        <a href="#organizers" class="hover:text-blue-600">Organizers</a>
+        <a href="#overview" class="hover:text-blue-600">Overview</a>
+        <!-- <a href="#tracks" class="hover:text-blue-600">Tracks</a> -->
+        <!-- <a href="#evaluation" class="hover:text-blue-600">Evaluation</a> -->
+        <a href="#participate" class="hover:text-blue-600">Participate</a>
+        <a href="#dataset" class="hover:text-blue-600">Dataset & Code</a>
+        <a href="#dates" class="hover:text-blue-600">Dates</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
       </nav>
 
-      <!-- Mobile nav (simple) -->
-      <nav class="sm:hidden text-sm font-medium">
-        <a href="#description" class="hover:text-blue-600">Menu</a>
+      <!-- Mobile hamburger button -->
+      <button id="mobile-menu-button" class="sm:hidden p-2 hover:bg-gray-100 rounded-lg hamburger"
+        aria-label="Toggle menu">
+        <div class="w-6 h-5 flex flex-col justify-between">
+          <span class="hamburger-line w-full h-0.5 bg-gray-800 block"></span>
+          <span class="hamburger-line w-full h-0.5 bg-gray-800 block"></span>
+          <span class="hamburger-line w-full h-0.5 bg-gray-800 block"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="mobile-menu sm:hidden border-t bg-white/95 backdrop-blur">
+      <nav class="max-w-6xl mx-auto px-6 py-4">
+        <div class="flex flex-col gap-4 text-sm font-medium">
+          <a href="#overview" class="hover:text-blue-600 py-2">Overview</a>
+          <a href="#participate" class="hover:text-blue-600 py-2">Participate</a>
+          <a href="#dataset" class="hover:text-blue-600 py-2">Dataset & Code</a>
+          <a href="#dates" class="hover:text-blue-600 py-2">Dates</a>
+          <a href="#contact" class="hover:text-blue-600 py-2">Contact</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <!-- ===== Main Content ===== -->
-  <main class="max-w-4xl mx-auto px-6 py-16 space-y-24">
+  <main class="max-w-4xl mx-auto px-6 py-16 space-y-16">
+
+    <!-- ===== Overview ===== -->
+    <section id="overview" class="space-y-6">
+      <header class="space-y-2">
+        <h2 class="text-4xl font-semibold">Overview</h2>
+      </header>
+
+      <div class="space-y-4 leading-relaxed">
+        <p>
+          The Academic Text-to-Music Generation (ATTM) Grand Challenge is a research-oriented competition
+          designed to advance text-to-music generation under fair, transparent, and reproducible conditions.
+        </p>
+
+        <p>
+          Unlike many recent text-to-music systems that rely on proprietary datasets and industrial-scale
+          compute, ATTM focuses on training generative models from scratch using a standardized, CC-licensed
+          dataset. The goal is to shift attention away from data scale and pre-trained black-box models, and
+          toward algorithmic efficiency, model design, and musical intelligence.
+        </p>
+
+        <p>
+          This challenge is hosted as part of <span class="font-semibold">ICME 2026</span> and welcomes
+          participation from students, academic labs, and researchers worldwide.
+        </p>
+      </div>
+    </section>
 
     <!-- ===== Grand Challenge Description ===== -->
     <section id="description" class="space-y-6">
@@ -60,75 +145,103 @@
 
       <div class="space-y-4 leading-relaxed">
         <p>
-          Since their inception, state-of-the-art Text-to-Music (TTM) models such as MusicLM and
-          MusicGen have been built upon a foundation of proprietary datasets and industrial-scale
-          compute clusters. While more recent efforts like Stable Audio Open (SAO) utilize public-domain
-          data, they still rely on massive computational resources that remain out of reach for most
-          academic researchers. This creates a "compute barrier" that forces academic labs into a
-          secondary role: instead of training models from scratch to explore fundamental architectural
-          innovations, researchers often settle for fine-tuning pre-trained "black-box" weights.
+          State-of-the-art Text-to-Music (TTM) models such as MusicLM and MusicGen have relied on proprietary datasets
+          and massive industrial compute resources. Even recent open efforts require enormous computational power,
+          creating a significant barrier for most academic researchers. As a result, academic labs are often limited to
+          fine-tuning pre-trained models rather than exploring fundamental architectural innovations from scratch.
         </p>
 
         <p>
-          While fine-tuning is useful for domain adaptation or adding controllability, it offers only limited
-          ability to alter the core behavior learned by the base model. This dependency hinders the field's
-          scientific advancement, as core TTM research remains unaffordable for the broader
-          community. The ATTM Grand Challenge introduces a different rule to the game, by
-          establishing a "fair-play" benchmark. With a strict training-from-scratch requirement on a
-          standardized, CC-licensed, 457-hour dataset derived from MTG-Jamendo, the challenge
-          focuses on algorithmic efficiency and musical intelligence rather than data volume.
+          The ATTM Grand Challenge establishes a fair-play benchmark to address this issue. All participants must train
+          the core generative model strictly from scratch using a standardized, CC-licensed dataset of 457 hours derived
+          from MTG-Jamendo. The focus is on algorithmic efficiency and musical intelligence rather than data scale or
+          compute volume.
         </p>
 
-        <p>To ensure transparency, we distinguish between components:</p>
+        <div class="rounded-xl border p-5 space-y-4">
+          <h3 class="text-lg font-semibold">Key Principles of the Challenge</h3>
 
-        <ul class="list-disc pl-6 space-y-2">
-          <li>
-            <span class="font-semibold">Core Generative Model:</span>
-            Must be trained strictly from scratch. No pre-trained weights are allowed. Examples of model
-            architectures include Transformers, State-Space Models, diffusion models, and flow-based models.
-          </li>
-          <li>
-            <span class="font-semibold">Auxiliary Components:</span>
-            Publicly available checkpoints are permitted for non-core-generative parts, specifically:
-            audio tokenizers and representation models (e.g., autoencoders that map audio to and from latent
-            spaces), Audio Language Models (ALMs) for captioning, and vocoders or audio enhancement models
-            for better audio quality. Proprietary or non-reproducible models are strictly prohibited.
-          </li>
-        </ul>
+          <div class="space-y-3">
+            <div>
+              <p class="font-semibold">Core generative models must be trained from scratch</p>
+              <p class="text-sm text-gray-700">No pre-trained weights are allowed for the main music generation model.
+              </p>
+            </div>
+
+            <div>
+              <p class="font-semibold">Auxiliary components may use public checkpoints, including:</p>
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li>Audio tokenizers / autoencoders</li>
+                <li>Audio Language Models (ALMs) for captioning</li>
+                <li>Vocoders or audio enhancement models</li>
+              </ul>
+              <p class="text-sm text-gray-700 mt-1">Proprietary or non-reproducible models are strictly prohibited.</p>
+            </div>
+
+            <div>
+              <p class="font-semibold">Fully automatic generation only</p>
+              <p class="text-sm text-gray-700">No human-in-the-loop annotation, manual editing, or cherry-picking of
+                samples is allowed.</p>
+            </div>
+
+            <div>
+              <p class="font-semibold">Instrumental music only</p>
+              <p class="text-sm text-gray-700">All training data is processed to remove vocals, and generated outputs
+                must be purely instrumental.</p>
+            </div>
+
+            <div>
+              <p class="font-semibold">Standardized text prompts</p>
+              <p class="text-sm text-gray-700">Organizers will provide two official caption sets (generated by Music
+                Flamingo and Qwen2-audio) to ensure consistent
+                evaluation across teams, though teams may create their own captions using public ALMs.</p>
+            </div>
+          </div>
+        </div>
 
         <p>
-          Any form of manual annotation or human-in-the-loop modification is disallowed. Participants
-          must declare all components; organizers reserve the right to verify training logs.
+          All components must be declared, and organizers reserve the right to verify training logs and configurations.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Tracks ===== -->
+    <section id="tracks" class="space-y-6">
+      <header class="space-y-2">
+        <h2 class="text-2xl font-semibold">Tracks</h2>
+      </header>
+
+      <div class="space-y-4 leading-relaxed">
+        <p>
+          To encourage broad participation, ATTM is divided into two tracks:
         </p>
 
-        <p>
-          To avoid copyright concerns and to isolate musical structure from linguistic content, the
-          challenge focuses exclusively on instrumental music (i.e., not lyrics-to-song generation). To
-          ensure this, the training data will be preprocessed using state-of-the-art vocal separation tools.
-          Participants must generate purely instrumental music. Moreover, while participants may
-          generate their own captions using public ALMs, the organizers will provide two "Standard
-          Caption Sets" (based on Music Flamingo and Qwen2-audio) to ensure a baseline for all teams.
-        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-xl border p-5 space-y-3">
+            <h3 class="text-lg font-semibold text-blue-600">Efficiency Track</h3>
+            <ul class="list-disc pl-6 space-y-2 text-sm">
+              <li>Maximum of <span class="font-semibold">500M parameters</span> for the core generative model</li>
+              <li>Maximum of <span class="font-semibold text-red-600">[TBD]</span><span class="font-semibold">
+                  parameters</span> for the
+                overall system (e.g. including
+                the encoder/decoder)</li>
+              <li>Designed to encourage innovation in efficient architectures</li>
+              <li>Suitable for student teams and resource-constrained labs</li>
+            </ul>
+          </div>
 
-        <p>To encourage participation, the challenge is structured into two tiers:</p>
+          <div class="rounded-xl border p-5 space-y-3">
+            <h3 class="text-lg font-semibold text-purple-600">Performance Track</h3>
+            <ul class="list-disc pl-6 space-y-2 text-sm">
+              <li><span class="font-semibold">No parameter limit</span></li>
+              <li>Focuses on pushing the upper bound of performance under academic data constraints</li>
+              <li>Suitable for teams exploring large or complex architectures</li>
+            </ul>
+          </div>
+        </div>
 
-        <ol class="list-decimal pl-6 space-y-2">
-          <li>
-            <span class="font-semibold">Efficiency Tier:</span>
-            Models are limited to a maximum of 500M parameters, encouraging innovation in efficient modeling.
-            Note that parameter count is chosen for verifiability; future iterations may consider other constraints
-            such as FLOPs or training time.
-          </li>
-          <li>
-            <span class="font-semibold">Performance Tier:</span>
-            No parameter limit, exploring the full potential of generative architectures trained on standardized
-            academic data.
-          </li>
-        </ol>
-
-        <p>
-          Baseline implementations will be provided to lower the entry barrier and ensure accessibility
-          for student and early-career research teams.
+        <p class="text-sm text-gray-600">
+          Both tracks are evaluated with the same criteria (as specified in the next section), but ranked independently.
         </p>
       </div>
     </section>
@@ -141,155 +254,255 @@
 
       <div class="space-y-4 leading-relaxed">
         <p>
-          We employ a multi-stage evaluation pipeline that balances broad distributional quality with a
-          granular measure of semantic alignment.
+          All teams will generate 100 audio samples based on a hidden set of test prompts provided by the organizers.
+          The evaluation process is performed on these submitted samples.
+          <br>
+          Evaluation is conducted in two stages, balancing automated metrics with human judgment.
         </p>
 
         <div class="rounded-xl border p-5 space-y-4">
-          <h3 class="text-lg font-semibold">Phase 1: Objective Ranking (The Scorecard)</h3>
+          <h3 class="text-lg font-semibold">Phase 1: Objective Evaluation (Scorecard)</h3>
           <p>
-            To qualify for the finals, models are ranked based on a composite of three automated metrics.
-            This ensures that models are both musically "plausible" and semantically "accurate."
+            All submissions are first ranked using a composite score based on the following metrics:
           </p>
 
-          <ul class="list-disc pl-6 space-y-2">
+          <ul class="list-disc pl-6 space-y-3">
             <li>
-              <span class="font-semibold">Audio Quality (FAD):</span>
-              We compute the Fréchet Audio Distance (FAD) between the participants' generated set and a high-quality
-              hidden test audio set.
+              <span class="font-semibold">Audio Quality — Fréchet Audio Distance (FAD)</span>
+              <p class="text-sm text-gray-700">Measures distributional similarity between generated audio and a hidden
+                reference set.</p>
             </li>
             <li>
-              <span class="font-semibold">Semantic Similarity (CLAP):</span>
-              We use the CLAP Score to measure the global alignment between the user's text prompt and the generated
-              audio embeddings.
+              <span class="font-semibold">Semantic Alignment — CLAP Score</span>
+              <p class="text-sm text-gray-700">Evaluates how well the generated audio matches the input text prompt.</p>
             </li>
             <li class="space-y-2">
               <div>
-                <span class="font-semibold">Concept Coverage Score (CCS - The K/M Metric):</span>
+                <span class="font-semibold">Concept Coverage Score (CCS / K–M Metric)</span>
               </div>
-              <ul class="list-[circle] pl-6 space-y-2">
+              <ul class="list-[circle] pl-6 space-y-2 text-sm text-gray-700">
                 <li>
-                  For a given evaluation query containing M distinct musical concepts (e.g., "slow tempo," "acoustic
-                  guitar," "lo-fi"),
-                  we use ALMs as objective blind judges.
+                  Each prompt contains M musical concepts (e.g., tempo, instrumentation, style).
                 </li>
                 <li>
-                  The ALMs are tasked with a binary presence-detection for each concept. If the judges confirm the
-                  presence of K concepts,
-                  the model earns a score of K/M for that query.
+                  Audio Language Models act as blind judges to detect whether each concept is present.
                 </li>
                 <li>
-                  The final CCS is the average K/M across the evaluation set of prompts.
+                  A score of K / M is assigned per prompt and averaged across the evaluation set.
                 </li>
               </ul>
             </li>
           </ul>
-        </div>
 
-        <p>
-          Participants must generate audio clips with a minimum length of 10 seconds. To ensure a fair
-          and standardized comparison, the evaluation (both automated and human) will be conducted
-          strictly on the first 10 seconds of the submitted audio. We intentionally adopt a short duration
-          for accessibility, while keeping participation costs manageable.
-        </p>
+          <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+            <p class="text-sm font-semibold">Submission constraints:</p>
+            <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1 mt-2">
+              <li>Audio must be at least 10 seconds long</li>
+              <li>Evaluation is performed only on the first 10 seconds for all teams</li>
+            </ul>
+          </div>
+        </div>
 
         <div class="rounded-xl border p-5 space-y-4">
           <h3 class="text-lg font-semibold">Phase 2: Human Evaluation (MOS)</h3>
           <p>
-            Based on Phase 1 results, the Top N=5 teams from each tier (where N will be determined based
-            on the total number of participants) will proceed to a formal Mean Opinion Score (MOS) study.
-            Experts will rate these samples on:
+            Based on Phase 1 rankings, the <span class="font-semibold">Top</span><span
+              class="font-semibold text-red-600"> N </span><span class="font-semibold">teams per track</span> advance to
+            a formal Mean Opinion Score (MOS) study conducted by expert listeners.
           </p>
 
+          <p>Evaluation dimensions include:</p>
           <ol class="list-decimal pl-6 space-y-2">
-            <li>Audio Quality: Clarity and lack of compression artifacts.</li>
-            <li>Musicality: Rhythmic stability, harmonic progression, and phrasing.</li>
-            <li>Prompt Adherence: How well the audio reflects the specific nuances of the text.</li>
+            <li><span class="font-semibold">Audio Quality</span></li>
+            <li><span class="font-semibold">Musicality</span> (rhythmic stability, harmonic progressions, phrasing)</li>
+            <li><span class="font-semibold">Prompt Adherence</span></li>
           </ol>
         </div>
       </div>
     </section>
 
-    <!-- ===== Submission Criteria and Deadlines ===== -->
-    <section id="submission" class="space-y-6">
+    <!-- ===== How to Participate ===== -->
+    <section id="participate" class="space-y-6">
       <header class="space-y-2">
-        <h2 class="text-2xl font-semibold">Submission Criteria and Deadlines</h2>
+        <h2 class="text-4xl font-semibold">How to Participate</h2>
+      </header>
+
+      <div class="space-y-6 leading-relaxed">
+        <div class="rounded-xl border p-5 space-y-4">
+          <h3 class="text-lg font-semibold">Registration</h3>
+          <p>
+            Teams must register before <span class="font-semibold">March 20, 2026</span> to indicate their intent to
+            participate.
+            Registration helps organizers prepare evaluation resources and does not require a completed system.
+          </p>
+          <p class="text-sm text-gray-600">
+            Registration instructions and links will be released at the official launch.
+          </p>
+        </div>
+
+        <div class="rounded-xl border p-5 space-y-4">
+          <h3 class="text-lg font-semibold">Submission</h3>
+          <p>Teams must submit their final entries before <span class="font-semibold">April 23, 2026</span>.
+            <br>
+            Final submissions must include:
+          </p>
+
+          <ul class="list-disc pl-6 space-y-2">
+            <li>
+              <span class="font-semibold">Generated audio for 100 hidden test prompts</span>
+              <ul class="list-[circle] pl-6 text-sm text-gray-700 space-y-1 mt-1">
+                <li>Format: WAV or MP3</li>
+                <li>Sample rate: 44.1 kHz</li>
+                <li>Duration: exactly 10 seconds used for evaluation</li>
+              </ul>
+            </li>
+            <li>
+              <span class="font-semibold">Model code</span> for parameter verification and reproducibility
+            </li>
+            <li>
+              <span class="font-semibold">A short Grand Challenge paper</span> (up to <span
+                class="font-semibold text-red-600">[TBD]</span> pages)
+              <p class="text-sm text-red-600">Grand Challenge papers are required only from finalist teams
+                (announced April 30, 2026) and must be submitted by May 20, 2026.
+              </p>
+            </li>
+          </ul>
+
+          <div class="mt-4 p-3 bg-amber-50 rounded-lg">
+            <p class="text-sm font-semibold text-amber-900">All submissions:</p>
+            <ul class="list-disc pl-6 text-sm text-amber-900 space-y-1 mt-2">
+              <li>Must be generated fully automatically</li>
+              <li>Must use one forward generation per prompt</li>
+              <li>Will be anonymized during evaluation</li>
+            </ul>
+          </div>
+
+          <p class="text-sm text-gray-600 mt-4">
+            Detailed submission instructions will be released at the official launch.
+            <br>
+            Top teams will be invited to present their work at the ICME 2026 Grand Challenge session.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Dataset & Sample Code ===== -->
+    <section id="dataset" class="space-y-6">
+      <header class="space-y-2">
+        <h2 class="text-4xl font-semibold">Dataset & Code</h2>
       </header>
 
       <div class="space-y-4 leading-relaxed">
-        <p>
-          Participants must submit 10-second audio clips (audio in WAV or MP3 format at 44.1kHz) for
-          the hidden test set of 100 prompts, along with their model code for parameter verification and
-          a short technical Grand Challenge (GC) paper. Organizers will coordinate peer reviews for
-          submitted GC papers, with optional placeholders for evaluation results to be added post-submission.
-          All submissions will be anonymized during evaluation. Organizers will host a 2-hour session at
-          ICME 2026, featuring participant presentations and a panel discussion.
-        </p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="rounded-xl border p-4 space-y-2">
+            <h3 class="font-semibold text-blue-600">Training Dataset</h3>
+            <p class="text-sm text-gray-700">
+              457 hours of CC-licensed instrumental music derived from MTG-Jamendo
+            </p>
+          </div>
 
-        <p>
-          To prevent cherry-picking and ensure reproducibility, all submissions must be generated in a
-          fully automatic manner using a single forward generation per prompt. i.e., no multiple candidate
-          generations followed by selection, regardless of the underlying sampling procedure.
-        </p>
+          <div class="rounded-xl border p-4 space-y-2">
+            <h3 class="font-semibold text-purple-600">Preprocessing Code</h3>
+            <p class="text-sm text-gray-700">
+              Provided for vocal separation to ensure instrumental-only data
+            </p>
+          </div>
 
-        <div class="rounded-xl border p-5 space-y-3">
-          <h3 class="text-lg font-semibold">Key Deadlines</h3>
-          <ul class="list-disc pl-6 space-y-2">
-            <li>February 10: Official Launch; release of training data and baseline code.</li>
-            <li>March 20: Registration Deadline; teams must indicate their willingness to participate to help organizers
-              prepare evaluation resources.</li>
-            <li>March 30: Dry Run; participants submit a small sample set to verify pipeline compatibility.</li>
-            <li>April 20: Release of Final Test Prompts.</li>
-            <li>April 23: Final Audio Submission Deadline (72-hour window).</li>
-            <li>April 30: Announcement of the Top N Finalists per tier.</li>
-            <li>May 20: Grand Challenge Paper Submission (up to 4 pages).</li>
-            <li>June 5: Final MOS results and paper acceptance notification.</li>
+          <div class="rounded-xl border p-4 space-y-2">
+            <h3 class="font-semibold text-green-600">Baseline Code</h3>
+            <p class="text-sm text-gray-700">
+              Provided to lower the entry barrier and help teams get started quickly
+            </p>
+          </div>
+        </div>
+
+        <p class="text-sm text-gray-600 text-center">
+          Dataset access links and code will be released at the official launch.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Important Dates ===== -->
+    <section id="dates" class="space-y-6">
+      <header class="space-y-2">
+        <h2 class="text-4xl font-semibold">Important Dates</h2>
+      </header>
+
+      <div class="space-y-4 leading-relaxed">
+        <div class="rounded-xl border p-4 sm:p-5">
+          <ul class="space-y-4">
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">Feb 10, 2026</span>
+              <span>Official launch</span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">Mar 20, 2026</span>
+              <span>Registration deadline</span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">Mar 30, 2026</span>
+              <span>Dry run submission deadline (pipeline verification)</span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">Apr 20, 2026</span>
+              <span>Final test prompts release</span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-red-600 sm:min-w-[4.5rem]">Apr 23, 2026</span>
+              <span><span class="font-semibold">Final audio submission deadline</span> (72-hour window)</span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">Apr 30, 2026</span>
+              <span>Finalists announcement</span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">May 20, 2026</span>
+              <span>Grand Challenge paper submission deadline</span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-green-600 sm:min-w-[4.5rem]">Jun 05, 2026</span>
+              <span><span class="font-semibold">Final MOS results & paper acceptance notification</span></span>
+            </li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ===== Organizer’s Contact and Short Bio ===== -->
-    <section id="organizers" class="space-y-6">
+    <!-- ===== Contact Information ===== -->
+    <section id="contact" class="space-y-6">
       <header class="space-y-2">
-        <h2 class="text-2xl font-semibold">Organizer’s Contact and Short Bio</h2>
+        <h2 class="text-4xl font-semibold">Contact Information</h2>
       </header>
 
       <div class="space-y-6 leading-relaxed">
-        <div class="rounded-xl border p-5 space-y-2">
-          <p class="font-semibold">
-            Yi-Hsuan (Eric) Yang (yhyangtw@ntu.edu.tw | https://affige.github.io/)
-          </p>
-          <p>
-            is a Full Professor at National Taiwan University (NTU). His research focuses on generative models
-            for music, leading to the development of models like MidiNet, MuseGAN, and Pop Music Transformer.
-            He is a Senior Member of IEEE and a former Associate Editor for IEEE Transactions on Multimedia.
-          </p>
+        <div class="rounded-xl border p-5 space-y-3">
+          <p class="font-semibold text-lg">Yi-Hsuan (Eric) Yang</p>
+          <p class="text-sm text-gray-600">National Taiwan University</p>
+          <div class="flex flex-wrap gap-3 text-sm">
+            <a href="mailto:yhyangtw@ntu.edu.tw" class="text-blue-600 hover:underline">📧 yhyangtw@ntu.edu.tw</a>
+            <a href="https://affige.github.io/" target="_blank" rel="noopener" class="text-blue-600 hover:underline">🔗
+              https://affige.github.io/</a>
+          </div>
         </div>
 
-        <div class="rounded-xl border p-5 space-y-2">
-          <p class="font-semibold">
-            Hao-Wen (Herman) Dong (hwdong@umich.edu | https://hermandong.com/)
-          </p>
-          <p>
-            is an Assistant Professor at the University of Michigan (UMich), specializing in generative models for
-            music.
-            He received his PhD from UCSD and has been recognized with the AAAI New Faculty Highlight and KAUST Rising
-            Stars in AI.
-            He organized the NeurIPS 2025 Workshop on AI for Music.
-          </p>
+        <div class="rounded-xl border p-5 space-y-3">
+          <p class="font-semibold text-lg">Hao-Wen (Herman) Dong</p>
+          <p class="text-sm text-gray-600">University of Michigan</p>
+          <div class="flex flex-wrap gap-3 text-sm">
+            <a href="mailto:hwdong@umich.edu" class="text-blue-600 hover:underline">📧 hwdong@umich.edu</a>
+            <a href="https://hermandong.com/" target="_blank" rel="noopener" class="text-blue-600 hover:underline">🔗
+              https://hermandong.com/</a>
+          </div>
         </div>
 
-        <div class="rounded-xl border p-5 space-y-2">
-          <p class="font-semibold">
-            Hung-Yi Lee (hungyilee@ntu.edu.tw | https://speech.ee.ntu.edu.tw/~hylee/)
-          </p>
-          <p>
-            is a Full Professor at NTU. He initiated the SUPERB benchmark for speech processing and has co-organized
-            numerous workshops, special sessions, or challenges at flagship venues including NeurIPS, ACL, ICML, ICASSP,
-            Interspeech, and ASRU. In the past five years, he has given tutorials at Interspeech, ICASSP, ACL, and
-            NAACL.
-          </p>
+        <div class="rounded-xl border p-5 space-y-3">
+          <p class="font-semibold text-lg">Hung-Yi Lee</p>
+          <p class="text-sm text-gray-600">National Taiwan University</p>
+          <div class="flex flex-wrap gap-3 text-sm">
+            <a href="mailto:hungyilee@ntu.edu.tw" class="text-blue-600 hover:underline">📧 hungyilee@ntu.edu.tw</a>
+            <a href="https://speech.ee.ntu.edu.tw/~hylee/" target="_blank" rel="noopener"
+              class="text-blue-600 hover:underline">🔗 https://speech.ee.ntu.edu.tw/~hylee/</a>
+          </div>
         </div>
       </div>
     </section>
@@ -298,8 +511,36 @@
 
   <!-- ===== Footer ===== -->
   <footer class="border-t py-6 text-center text-sm text-gray-500">
-    © 2026 Academic Text-to-Music Generation (ATTM). All rights reserved.
+    © 2026 Academic Text-to-Music Generation (ATTM) Grand Challenge. All rights reserved.
   </footer>
+
+  <!-- Mobile menu toggle script -->
+  <script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      mobileMenuButton.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenuButton.classList.remove('active');
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('active');
+        mobileMenuButton.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 
