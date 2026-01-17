@@ -2,6 +2,4 @@
 
 This is the landing page for the ICME 2026 Academic Text-to-Music Generation Grand Challenge.
 
-## View the Page
-
-Visit: [https://ndrw1221.github.io/ICME26-ATTM-Grand-Challenge/](https://ndrw1221.github.io/ICME26-ATTM-Grand-Challenge/)
+Visit: [https://twmusicai.github.io/ICME26-ATTM-Grand-Challenge/](https://twmusicai.github.io/ICME26-ATTM-Grand-Challenge/)
