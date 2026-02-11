@@ -215,7 +215,28 @@
         <h2 class="text-2xl font-semibold text-blue-900 mb-4">📢 Latest Updates</h2>
         <ul class="space-y-3 list-disc list-inside">
           <li class="text-blue-900">
+            <span class="inline-block bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded mr-2">NEW!</span>
+            <span class="font-semibold">Test Prompt Format Details Released!</span>
+            <span class="text-xs text-blue-700 ml-2">(Feb 12, 2026)</span>
+            <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
+              We've added detailed information about the test prompt format, including generation process,
+              specifications, and example prompts. Check out the
+              <a href="#evaluation" class="underline hover:text-blue-600 font-medium">Evaluation Criteria</a> section to
+              learn more and refine your training strategy!
+            </div>
+          </li>
+          <li class="text-blue-900">
+            <span class="font-semibold">Baseline Code Released!</span>
+            <span class="text-xs text-blue-700 ml-2">(Feb 6, 2026)</span>
+            <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
+              The baseline code is now available! Check out the
+              <a href="#dataset" class="underline hover:text-blue-600 font-medium">Dataset & Code</a> section
+              to access the MeanAudio baseline implementation and get started.
+            </div>
+          </li>
+          <li class="text-blue-900">
             <span class="font-semibold">Registration Now Open!</span>
+            <span class="text-xs text-blue-700 ml-2">(Feb 5, 2026)</span>
             <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
               Team registration is now available! Register by March 20, 2026 via the
               <a href="#participate" class="underline hover:text-blue-600 font-medium">How to Participate</a> section.
@@ -224,20 +245,13 @@
           </li>
           <li class="text-blue-900">
             <span class="font-semibold">Dataset Download & Preprocessing Code Released!</span>
+            <span class="text-xs text-blue-700 ml-2">(Feb 5, 2026)</span>
             <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
               The training dataset download instructions and preprocessing code are now available in the
               <a href="#dataset" class="underline hover:text-blue-600 font-medium">Dataset & Code</a> section.
               Please note that downloading and processing the dataset takes considerable time.
               <strong>We strongly recommend teams to start as soon as possible once you've decided to
                 participate.</strong>
-            </div>
-          </li>
-          <li class="text-blue-900">
-            <span class="font-semibold">Baseline Code Released!</span>
-            <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
-              The baseline code is now available! Check out the
-              <a href="#dataset" class="underline hover:text-blue-600 font-medium">Dataset & Code</a> section
-              to access the MeanAudio baseline implementation and get started.
             </div>
           </li>
         </ul>
@@ -538,6 +552,62 @@
             <li><span class="font-semibold">Musicality</span> (rhythmic stability, harmonic progressions, phrasing)</li>
             <li><span class="font-semibold">Prompt Adherence</span></li>
           </ol>
+        </div>
+
+        <div class="rounded-xl border p-5 space-y-4">
+          <h3 class="text-lg font-semibold">Test Prompt Format</h3>
+          <p>
+            Understanding the test prompt format can help teams refine their training approaches and caption
+            augmentation strategies to achieve better alignment during evaluation.
+          </p>
+
+          <div class="space-y-3">
+            <div>
+              <p class="font-semibold">Prompt generation process</p>
+              <p class="text-sm text-gray-700">
+                Test prompts will be generated using the <strong>Qwen2-Audio-7B-Instruct</strong> model
+                (<code class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">Qwen/Qwen2-Audio-7B-Instruct</code>
+                on Hugging Face).
+                The model will be prompted with several musical concept tags including genre, instrumentation, mood, and
+                other musical attributes, then asked to generate a natural music caption that incorporates these tags.
+              </p>
+            </div>
+
+            <div>
+              <p class="font-semibold">Format Specifications</p>
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                <li><strong>Test Set Size:</strong> 100 prompts</li>
+                <li><strong>Prompt Length:</strong> Under 100 words</li>
+                <li><strong>Prompt Style:</strong> Caption-like descriptions (e.g., "An upbeat EDM track with pulsing
+                  synths and driving bass") rather than instruction-like commands (e.g., "Generate an EDM song with
+                  synths and bass")</li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="font-semibold">Example Test Prompts</p>
+              <p class="text-sm text-gray-700 mb-2">
+                Below are representative examples of the test prompt style:
+              </p>
+              <ul class="list-disc pl-6 text-sm text-gray-700 space-y-3">
+                <li>
+                  <div><strong>Tags:</strong> rock, electric guitar, energetic</div>
+                  <div><strong>Caption:</strong> "An energetic rock track driven by a bold electric guitar, pulsing with
+                    intensity and raw power."</div>
+                </li>
+                <li>
+                  <div><strong>Tags:</strong> jazz, piano, mellow</div>
+                  <div><strong>Caption:</strong> "A mellow jazz piece featuring soothing piano melodies, calm and
+                    relaxed in tone."</div>
+                </li>
+                <li>
+                  <div><strong>Tags:</strong> electronic, synthesizer, atmospheric</div>
+                  <div><strong>Caption:</strong> "A smooth, atmospheric electronic track driven by rich synthesizer
+                    layers, creating a serene and immersive soundscape."</div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
