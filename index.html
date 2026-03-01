@@ -217,6 +217,25 @@
           <ul class="space-y-3 list-disc list-inside">
             <li class="text-blue-900">
               <span class="inline-block bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded mr-2">NEW!</span>
+              <span class="font-semibold">Important Challenge Rules Updates!</span>
+              <span class="text-xs text-blue-700 ml-2">(Mar 1, 2026)</span>
+              <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
+                We've updated several important rules for the challenge:
+                <ul class="list-disc ml-5 mt-1 space-y-1">
+                  <li><strong>Team Participation:</strong> Each member can now be in up to three teams (regardless of
+                    tracks), but can only be the first author for one team. See the <a href="#tracks"
+                      class="underline hover:text-blue-600 font-medium">Tracks</a> section for details.</li>
+                  <li><strong>Final Submissions:</strong> Teams may submit up to two final results per team. Only the
+                    higher-scoring one will count as your team's final score. See the <a href="#participate"
+                      class="underline hover:text-blue-600 font-medium">How to Participate</a> section for details.</li>
+                  <li><strong>Dry-run Submissions:</strong> At the dry-run stage, we will release a dry-run set of
+                    prompts. Teams may optionally submit results to receive Phase 1 evaluation scores as mid-contest
+                    feedback. See the <a href="#dates" class="underline hover:text-blue-600 font-medium">Important
+                      Dates</a> section for details.</li>
+                </ul>
+              </div>
+            </li>
+            <li class="text-blue-900">
               <span class="font-semibold">Reference Caption Sets & Captioning Pipeline Released!</span>
               <span class="text-xs text-blue-700 ml-2">(Feb 25, 2026)</span>
               <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
@@ -428,8 +447,10 @@
           the organizers proactively to discuss and resolve any ambiguities before submission.
         </p>
         <p class="text-sm text-gray-600">
-          Teams may participate in one or both tracks. However, each individual can only be member of one team for each
-          track. Both tracks are evaluated with the same criteria (as specified in the coming section), but ranked
+          Teams may participate in one or both tracks. Each member can be in up to <span class="font-semibold">three
+            teams</span> (regardless of tracks), but can only be the <span class="font-semibold">first author for one
+            team</span>. Both tracks are evaluated with the same criteria (as specified in the coming section), but
+          ranked
           independently.
         </p>
       </div>
@@ -662,6 +683,9 @@
                 <li>Format: WAV or MP3</li>
                 <li>Sample rate: 44.1 kHz</li>
                 <li>Duration: exactly 10 seconds used for evaluation</li>
+                <li>Teams may submit up to <span class="font-semibold">two final results</span> (two submissions per
+                  team). Only the <span class="font-semibold">higher-scoring one</span> will be used as your team's
+                  final score.</li>
               </ul>
             </li>
             <li>
@@ -764,7 +788,7 @@
               Provided to lower the entry barrier and help teams get started quickly<br>
             </p>
             <div class="mt-3 pt-3 border-t space-y-2">
-              <p class="text-sm font-semibold text-gray-600 uppercase tracking-wide">Acess Code</p>
+              <p class="text-sm font-semibold text-gray-600 uppercase tracking-wide">Access Code</p>
               <p class="text-sm text-gray-600">
                 Find the baseline code and instructions at <a
                   href="https://github.com/ntu-musicailab/ICME26-ATTM-GC-MeanAudio" target="_blank" rel="noopener"
@@ -795,7 +819,17 @@
             </li>
             <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">Mar 30, 2026</span>
-              <span>Dry-run submission deadline (pipeline verification)</span>
+              <div class="relative group">
+                <span class="cursor-help border-b border-dotted border-gray-400">Dry-run submission deadline (pipeline
+                  verification)</span>
+                <div
+                  class="hidden group-hover:block absolute left-0 top-full mt-2 w-80 p-3 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                  <p class="text-sm text-gray-600">At this stage, we will release a dry-run set of prompts. Teams may
+                    optionally run inference and submit results to receive Phase 1 evaluation scores using the same
+                    criteria as the final submission. This provides mid-contest feedback to reflect on your strategy and
+                    ensures you can run inference under limited time and submit results in the correct format.</p>
+                </div>
+              </div>
             </li>
             <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">Apr 20, 2026</span>
