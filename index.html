@@ -536,11 +536,21 @@
             <li>
               <span class="font-semibold">Audio Quality — Fréchet Audio Distance (FAD)</span>
               <p class="text-sm text-gray-700">Measures distributional similarity between generated audio and a hidden
-                reference set.</p>
+                reference set. <br>
+                Computed using the CLAP-Laion-Music checkpoint
+                <code
+                  class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">music_audioset_epoch_15_esc_90.14.pt</code>
+                as the embedder.
+              </p>
             </li>
             <li>
               <span class="font-semibold">Semantic Alignment — CLAP Score</span>
-              <p class="text-sm text-gray-700">Evaluates how well the generated audio matches the input text prompt.</p>
+              <p class="text-sm text-gray-700">Evaluates how well the generated audio matches the input text prompt.
+                <br>
+                Computed using the CLAP-Laion-Music checkpoint
+                <code
+                  class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">music_audioset_epoch_15_esc_90.14.pt</code>.
+              </p>
             </li>
             <li class="space-y-2">
               <div>
@@ -548,7 +558,8 @@
               </div>
               <ul class="list-[circle] pl-6 space-y-2 text-sm text-gray-700">
                 <li>
-                  Each prompt contains M musical concepts (e.g., tempo, instrumentation, style).
+                  Each prompt contains M musical concepts (e.g., <del>tempo</del>, instrumentation, <del>style</del>,
+                  genre, mood/theme).
                 </li>
                 <li>
                   Audio Language Models act as blind judges to detect whether each concept is present.
@@ -931,8 +942,9 @@
   </section>
 
   <!-- ===== Footer ===== -->
-  <footer class="border-t py-6 text-center text-sm text-gray-500">
-    © 2026 Academic Text-to-Music Generation (ATTM) Grand Challenge. All rights reserved.
+  <footer class="border-t py-6 text-center text-sm text-gray-500 space-y-1">
+    <p>Organizer: 台灣大學人工智慧頂尖研究中心 (NTU AI-CoRE)</p>
+    <p>© 2026 Academic Text-to-Music Generation (ATTM) Grand Challenge. All rights reserved.</p>
   </footer>
 
   <!-- Mobile menu toggle script -->
