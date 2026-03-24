@@ -536,11 +536,21 @@
             <li>
               <span class="font-semibold">Audio Quality — Fréchet Audio Distance (FAD)</span>
               <p class="text-sm text-gray-700">Measures distributional similarity between generated audio and a hidden
-                reference set.</p>
+                reference set. <br>
+                Computed using the CLAP-Laion-Music checkpoint
+                <code
+                  class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">music_audioset_epoch_15_esc_90.14.pt</code>
+                as the embedder.
+              </p>
             </li>
             <li>
               <span class="font-semibold">Semantic Alignment — CLAP Score</span>
-              <p class="text-sm text-gray-700">Evaluates how well the generated audio matches the input text prompt.</p>
+              <p class="text-sm text-gray-700">Evaluates how well the generated audio matches the input text prompt.
+                <br>
+                Computed using the CLAP-Laion-Music checkpoint
+                <code
+                  class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">music_audioset_epoch_15_esc_90.14.pt</code>.
+              </p>
             </li>
             <li class="space-y-2">
               <div>
