@@ -217,6 +217,28 @@
           <ul class="space-y-3 list-disc list-inside">
             <li class="text-blue-900">
               <span class="inline-block bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded mr-2">NEW!</span>
+              <span class="font-semibold">Paper Submission Guideline Added!</span>
+              <span class="text-xs text-blue-700 ml-2">(Apr 24, 2026)</span>
+              <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
+                A dedicated Grand Challenge paper submission guideline is now available, including report format,
+                eligibility, and CMT3 submission information.
+                See the <a href="#participate" class="underline hover:text-blue-600 font-medium">How to Participate</a>
+                section for details.
+              </div>
+            </li>
+            <li class="text-blue-900">
+              <span class="inline-block bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded mr-2">NEW!</span>
+              <span class="font-semibold">Important Dates Timeline Updated!</span>
+              <span class="text-xs text-blue-700 ml-2">(Apr 24, 2026)</span>
+              <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
+                The Important Dates timeline has been updated with revised deadlines for technical paper submission,
+                paper acceptance notification, camera-ready submission, final MOS results announcement, and author
+                registration.
+                See the <a href="#dates" class="underline hover:text-blue-600 font-medium">Important Dates</a>
+                section for full details.
+              </div>
+            </li>
+            <li class="text-blue-900">
               <span class="font-semibold">Dry-run Results Table Released!</span>
               <span class="text-xs text-blue-700 ml-2">(Apr 15, 2026)</span>
               <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
@@ -311,6 +333,109 @@
             </li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== Dry-run Results ===== -->
+    <section id="dry-run-results" class="space-y-6">
+      <header class="space-y-2">
+        <h2 class="text-4xl font-semibold">Dry-run Results</h2>
+        <p class="text-sm text-gray-600">De-identified result of the dry-run phase.</p>
+
+        <div class="text-sm text-gray-600 space-y-2 leading-relaxed">
+          <ul class="list-disc pl-6 space-y-1">
+            <li>Both FAD and CLAP are computed with the CLAP-Laion-Music checkpoint <code
+                class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">music_audioset_epoch_15_esc_90.14.pt</code>.
+            </li>
+            <li>The reference set used for FAD in the dry-run phase is the Song Describer Dataset. Final evaluation
+              will use a hidden reference set.</li>
+            <li>Concept Coverage Score (CCS) is not presented during the dry-run phase.</li>
+          </ul>
+        </div>
+      </header>
+
+      <div class="rounded-xl border p-4 sm:p-5 overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b bg-gray-50">
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">Submission ID</th>
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">FAD↓</th>
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">CLAP↑</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr>
+              <td class="px-4 py-3 font-medium">0</td>
+              <td class="px-4 py-3">0.4040</td>
+              <td class="px-4 py-3">0.3231</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">1</td>
+              <td class="px-4 py-3">0.5455</td>
+              <td class="px-4 py-3">0.3244</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">2</td>
+              <td class="px-4 py-3">0.5181</td>
+              <td class="px-4 py-3">0.3100</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">3</td>
+              <td class="px-4 py-3">0.5547</td>
+              <td class="px-4 py-3">0.3176</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">4</td>
+              <td class="px-4 py-3">0.5127</td>
+              <td class="px-4 py-3">0.3092</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">5</td>
+              <td class="px-4 py-3">0.6583</td>
+              <td class="px-4 py-3">0.2742</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">6</td>
+              <td class="px-4 py-3">0.7164</td>
+              <td class="px-4 py-3">0.2119</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">7</td>
+              <td class="px-4 py-3">0.6461</td>
+              <td class="px-4 py-3">0.2642</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">8</td>
+              <td class="px-4 py-3">0.6364</td>
+              <td class="px-4 py-3">0.2598</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">9</td>
+              <td class="px-4 py-3">0.6890</td>
+              <td class="px-4 py-3">0.2200</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">10</td>
+              <td class="px-4 py-3">0.5003</td>
+              <td class="px-4 py-3">0.1950</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">11</td>
+              <td class="px-4 py-3">0.4998</td>
+              <td class="px-4 py-3">0.1866</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">12</td>
+              <td class="px-4 py-3">0.6516</td>
+              <td class="px-4 py-3">0.2807</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">13</td>
+              <td class="px-4 py-3">0.6711</td>
+              <td class="px-4 py-3">0.2827</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -819,7 +944,7 @@
             <li>
               <span class="font-semibold">Generated audio for 100 hidden test prompts</span>
               <ul class="list-[circle] pl-6 text-sm text-gray-700 space-y-1 mt-1">
-                <li>Format: WAV or MP3</li>
+                <li>Format: WAV <span class="line-through">or MP3</span></li>
                 <li>Sample rate: 44.1 kHz</li>
                 <li>Duration: exactly 10 seconds used for evaluation</li>
                 <li>Teams may submit up to <span class="font-semibold">two final results</span> (two submissions per
@@ -831,10 +956,9 @@
               <span class="font-semibold">Model code</span> for parameter verification and reproducibility
             </li>
             <li>
-              <span class="font-semibold">A short Grand Challenge paper</span> (up to 4 pages)
-              <p class="text-sm text-gray-600">Grand Challenge papers are required only from finalist teams
-                (announced April 30, 2026) and must be submitted by May 15, 2026. Papers from non-finalist teams, though
-                not required, are still encouraged and welcome.
+              <span class="font-semibold">A Grand Challenge technical report</span> (up to 6 pages, ICME format)
+              <p class="text-sm text-gray-600">See the paper submission guideline below for eligibility and ICME
+                submission requirements.
               </p>
             </li>
           </ul>
@@ -853,6 +977,48 @@
             <br>
             Top teams will be invited to present their work at the ICME 2026 Grand Challenge session.
           </p>
+        </div>
+
+        <div class="rounded-xl border p-5 space-y-4">
+          <h3 class="text-lg font-semibold">Grand Challenge Paper Submission Guidelines</h3>
+          <p>
+            The ICME 2026 Grand Challenge paper submission system is active on CMT3:
+            <a href="https://cmt3.research.microsoft.com/IEEEICMEW2026" target="_blank" rel="noopener"
+              class="text-blue-600 hover:underline font-medium break-all">https://cmt3.research.microsoft.com/IEEEICMEW2026</a>.
+          </p>
+
+          <div class="space-y-2">
+            <p class="font-semibold">Formatting and Submission</p>
+            <ul class="list-disc pl-6 space-y-1 text-sm text-gray-700">
+              <li>Technical reports must follow the same format as regular ICME conference papers.</li>
+              <li>Maximum length is <span class="font-semibold">6 pages</span>, including text, figures, and references.
+              </li>
+              <li>Author instructions and paper templates: <a
+                  href="https://2026.ieeeicme.org/author-information-and-submission-instructions/" target="_blank"
+                  rel="noopener" class="text-blue-600 hover:underline">ICME 2026 Author Information</a>.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-2">
+            <p class="font-semibold">Proceedings and Indexing Eligibility</p>
+            <ul class="list-disc pl-6 space-y-1 text-sm text-gray-700">
+              <li>Reports are eligible for IEEE Xplore inclusion and potential EI Compendex indexing if uploaded in CMT3
+                before the submission deadline.</li>
+              <li>Eligibility also requires full registration and payment by the camera-ready deadline, per
+                <a href="https://2026.ieeeicme.org/conference-policies/" target="_blank" rel="noopener"
+                  class="text-blue-600 hover:underline">ICME 2026 Conference Policies</a>.
+              </li>
+              <li>Participants who do not submit a report may still receive a participation certificate from the grand
+                challenge (no fee required), but will not be eligible for proceedings/indexing.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-2">
+            <p class="font-semibold">GC Paper Dates</p>
+            <p class="text-sm text-gray-600">For the latest submission, acceptance, and camera-ready deadlines, see
+              <a href="#dates" class="text-blue-600 hover:underline font-medium">Important Dates</a>.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -989,17 +1155,33 @@
               <span>Finalists announcement</span>
             </li>
             <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-gray-500 line-through sm:min-w-[4.5rem]">May 15, 2026</span>
+              <span class="text-gray-500 line-through">Grand Challenge paper submission deadline</span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-gray-500 line-through sm:min-w-[4.5rem]">May 22, 2026</span>
+              <span class="text-gray-500 line-through"><span class="font-semibold">Final MOS results & announcement
+                  of winners & paper acceptance notification</span></span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-gray-500 line-through sm:min-w-[4.5rem]">May 30, 2026</span>
+              <span class="text-gray-500 line-through">Camera-ready and author registration deadline</span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">May 05, 2026</span>
+              <span class="font-semibold">Technical paper submission deadline</span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">May 10, 2026</span>
+              <span>Paper acceptance notification</span>
+            </li>
+            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">May 15, 2026</span>
-              <span>Grand Challenge paper submission deadline</span>
+              <span class="font-semibold">Camera-ready and author registration deadline</span>
             </li>
             <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">May 22, 2026</span>
-              <span><span class="font-semibold">Final MOS results & announcement of winners & paper acceptance
-                  notification</span></span>
-            </li>
-            <li class="flex flex-col sm:flex-row gap-2 sm:gap-3">
-              <span class="font-semibold text-blue-600 sm:min-w-[4.5rem]">May 30, 2026</span>
-              <span>Camera-ready and author registration deadline</span>
+              <span>Final MOS results, announcement of winners</span>
             </li>
           </ul>
         </div>
