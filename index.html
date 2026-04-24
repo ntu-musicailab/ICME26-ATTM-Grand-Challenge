@@ -439,6 +439,109 @@
       </div>
     </section>
 
+    <!-- ===== Dry-run Results ===== -->
+    <section id="dry-run-results" class="space-y-6">
+      <header class="space-y-2">
+        <h2 class="text-4xl font-semibold">Dry-run Results</h2>
+        <p class="text-sm text-gray-600">De-identified result of the dry-run phase.</p>
+
+        <div class="text-sm text-gray-600 space-y-2 leading-relaxed">
+          <ul class="list-disc pl-6 space-y-1">
+            <li>Both FAD and CLAP are computed with the CLAP-Laion-Music checkpoint <code
+                class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">music_audioset_epoch_15_esc_90.14.pt</code>.
+            </li>
+            <li>The reference set used for FAD in the dry-run phase is the Song Describer Dataset. Final evaluation
+              will use a hidden reference set.</li>
+            <li>Concept Coverage Score (CCS) is not presented during the dry-run phase.</li>
+          </ul>
+        </div>
+      </header>
+
+      <div class="rounded-xl border p-4 sm:p-5 overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b bg-gray-50">
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">Submission ID</th>
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">FAD↓</th>
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">CLAP↑</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr>
+              <td class="px-4 py-3 font-medium">0</td>
+              <td class="px-4 py-3">0.4040</td>
+              <td class="px-4 py-3">0.3231</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">1</td>
+              <td class="px-4 py-3">0.5455</td>
+              <td class="px-4 py-3">0.3244</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">2</td>
+              <td class="px-4 py-3">0.5181</td>
+              <td class="px-4 py-3">0.3100</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">3</td>
+              <td class="px-4 py-3">0.5547</td>
+              <td class="px-4 py-3">0.3176</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">4</td>
+              <td class="px-4 py-3">0.5127</td>
+              <td class="px-4 py-3">0.3092</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">5</td>
+              <td class="px-4 py-3">0.6583</td>
+              <td class="px-4 py-3">0.2742</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">6</td>
+              <td class="px-4 py-3">0.7164</td>
+              <td class="px-4 py-3">0.2119</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">7</td>
+              <td class="px-4 py-3">0.6461</td>
+              <td class="px-4 py-3">0.2642</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">8</td>
+              <td class="px-4 py-3">0.6364</td>
+              <td class="px-4 py-3">0.2598</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">9</td>
+              <td class="px-4 py-3">0.6890</td>
+              <td class="px-4 py-3">0.2200</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">10</td>
+              <td class="px-4 py-3">0.5003</td>
+              <td class="px-4 py-3">0.1950</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">11</td>
+              <td class="px-4 py-3">0.4998</td>
+              <td class="px-4 py-3">0.1866</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">12</td>
+              <td class="px-4 py-3">0.6516</td>
+              <td class="px-4 py-3">0.2807</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">13</td>
+              <td class="px-4 py-3">0.6711</td>
+              <td class="px-4 py-3">0.2827</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- ===== Overview ===== -->
     <section id="overview" class="space-y-6">
       <header class="space-y-2">
