@@ -162,6 +162,7 @@
               <a href="#evaluation">Evaluation Criteria</a>
             </div>
           </div>
+          <a href="#final-results" class="hover:text-blue-600">Results</a>
           <a href="#participate" class="hover:text-blue-600">Participate</a>
           <a href="#dataset" class="hover:text-blue-600">Dataset & Code</a>
           <a href="#dates" class="hover:text-blue-600">Dates</a>
@@ -198,6 +199,7 @@
             <a href="#evaluation" class="block hover:text-blue-600 py-2">Evaluation Criteria</a>
           </div>
         </div>
+        <a href="#final-results" class="hover:text-blue-600 py-2">Results</a>
         <a href="#participate" class="hover:text-blue-600 py-2">Participate</a>
         <a href="#dataset" class="hover:text-blue-600 py-2">Dataset & Code</a>
         <a href="#dates" class="hover:text-blue-600 py-2">Dates</a>
@@ -217,6 +219,17 @@
           <ul class="space-y-3 list-disc list-inside">
             <li class="text-blue-900">
               <span class="inline-block bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded mr-2">NEW!</span>
+              <span class="font-semibold">Final Evaluation Results Released!</span>
+              <span class="text-xs text-blue-700 ml-2">(Apr 29, 2026)</span>
+              <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
+                The final evaluation results are now available, including FAD, CLAP, CCS, and Final Ranking for all
+                submissions.
+                See the <a href="#final-results" class="underline hover:text-blue-600 font-medium">Final Evaluation
+                  Results</a>
+                section for details.
+              </div>
+            </li>
+            <li class="text-blue-900">
               <span class="font-semibold">Paper Submission Guideline Added!</span>
               <span class="text-xs text-blue-700 ml-2">(Apr 24, 2026)</span>
               <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
@@ -227,7 +240,6 @@
               </div>
             </li>
             <li class="text-blue-900">
-              <span class="inline-block bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded mr-2">NEW!</span>
               <span class="font-semibold">Important Dates Timeline Updated!</span>
               <span class="text-xs text-blue-700 ml-2">(Apr 24, 2026)</span>
               <div class="text-sm text-blue-800 leading-relaxed mt-1 ml-5">
@@ -333,6 +345,304 @@
             </li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== Final Evaluation Results ===== -->
+    <section id="final-results" class="space-y-6">
+      <header class="space-y-2">
+        <h2 class="text-4xl font-semibold">Final Evaluation Results</h2>
+        <p class="text-sm text-gray-600">De-identified results of the final evaluation phase.</p>
+
+        <div class="text-sm text-gray-600 space-y-2 leading-relaxed">
+          <ul class="list-disc pl-6 space-y-1">
+            <li>Both FAD and CLAP are computed with the CLAP-Laion-Music checkpoint <code
+                class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">music_audioset_epoch_15_esc_90.14.pt</code>.
+              The reference set used for FAD is a hidden instrumental subset from Jamendo.</li>
+            <li>CCS (Concept Coverage Score) measures how well generated audio covers the musical concepts specified in
+              each prompt, evaluated using a Large Audio Language Model (LALM).</li>
+            <li>Final Ranking is determined by a Borda count aggregation across FAD, CLAP, and CCS scores.</li>
+            <li>Submission IDs ending in <code class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">_e</code> are
+              from the Efficiency Track; those ending in <code
+                class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">_p</code> are from the Performance Track.
+            </li>
+          </ul>
+        </div>
+      </header>
+
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-sm font-medium text-gray-600">Sort by:</span>
+        <button id="sort-id-btn" onclick="sortFinalResults('id')"
+          class="px-3 py-1.5 text-sm font-medium rounded-lg border transition-colors bg-blue-600 text-white border-blue-600">
+          Submission ID
+        </button>
+        <button id="sort-rank-btn" onclick="sortFinalResults('rank')"
+          class="px-3 py-1.5 text-sm font-medium rounded-lg border transition-colors text-gray-700 border-gray-300 hover:bg-gray-50">
+          Rank
+        </button>
+      </div>
+
+      <div class="rounded-xl border p-4 sm:p-5 overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b bg-gray-50">
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">Submission ID</th>
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">FAD↓</th>
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">CLAP↑</th>
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">CCS↑</th>
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">Final Ranking</th>
+            </tr>
+          </thead>
+          <tbody id="final-results-tbody" class="divide-y">
+            <tr data-sid="0_e" data-rank="6">
+              <td class="px-4 py-3 font-medium">0_e</td>
+              <td class="px-4 py-3">0.556</td>
+              <td class="px-4 py-3">0.310</td>
+              <td class="px-4 py-3">0.796</td>
+              <td class="px-4 py-3">6</td>
+            </tr>
+            <tr data-sid="1_e" data-rank="2">
+              <td class="px-4 py-3 font-medium">1_e</td>
+              <td class="px-4 py-3">0.577</td>
+              <td class="px-4 py-3">0.338</td>
+              <td class="px-4 py-3">0.863</td>
+              <td class="px-4 py-3">2</td>
+            </tr>
+            <tr data-sid="2_e" data-rank="8">
+              <td class="px-4 py-3 font-medium">2_e</td>
+              <td class="px-4 py-3">0.498</td>
+              <td class="px-4 py-3">0.270</td>
+              <td class="px-4 py-3">0.763</td>
+              <td class="px-4 py-3">8</td>
+            </tr>
+            <tr data-sid="3_e" data-rank="12">
+              <td class="px-4 py-3 font-medium">3_e</td>
+              <td class="px-4 py-3">0.518</td>
+              <td class="px-4 py-3">0.251</td>
+              <td class="px-4 py-3">0.763</td>
+              <td class="px-4 py-3">12</td>
+            </tr>
+            <tr data-sid="4_e" data-rank="9">
+              <td class="px-4 py-3 font-medium">4_e</td>
+              <td class="px-4 py-3">0.574</td>
+              <td class="px-4 py-3">0.195</td>
+              <td class="px-4 py-3">0.833</td>
+              <td class="px-4 py-3">9</td>
+            </tr>
+            <tr data-sid="5_e" data-rank="2">
+              <td class="px-4 py-3 font-medium">5_e</td>
+              <td class="px-4 py-3">0.487</td>
+              <td class="px-4 py-3">0.305</td>
+              <td class="px-4 py-3">0.800</td>
+              <td class="px-4 py-3">2</td>
+            </tr>
+            <tr data-sid="6_e" data-rank="9">
+              <td class="px-4 py-3 font-medium">6_e</td>
+              <td class="px-4 py-3">0.667</td>
+              <td class="px-4 py-3">0.268</td>
+              <td class="px-4 py-3">0.808</td>
+              <td class="px-4 py-3">9</td>
+            </tr>
+            <tr data-sid="7_e" data-rank="1">
+              <td class="px-4 py-3 font-medium">7_e</td>
+              <td class="px-4 py-3">0.417</td>
+              <td class="px-4 py-3">0.261</td>
+              <td class="px-4 py-3">0.867</td>
+              <td class="px-4 py-3">1</td>
+            </tr>
+            <tr data-sid="8_e" data-rank="2">
+              <td class="px-4 py-3 font-medium">8_e</td>
+              <td class="px-4 py-3">0.495</td>
+              <td class="px-4 py-3">0.295</td>
+              <td class="px-4 py-3">0.804</td>
+              <td class="px-4 py-3">2</td>
+            </tr>
+            <tr data-sid="9_e" data-rank="12">
+              <td class="px-4 py-3 font-medium">9_e</td>
+              <td class="px-4 py-3">0.646</td>
+              <td class="px-4 py-3">0.263</td>
+              <td class="px-4 py-3">0.767</td>
+              <td class="px-4 py-3">12</td>
+            </tr>
+            <tr data-sid="10_e" data-rank="11">
+              <td class="px-4 py-3 font-medium">10_e</td>
+              <td class="px-4 py-3">0.482</td>
+              <td class="px-4 py-3">0.163</td>
+              <td class="px-4 py-3">0.738</td>
+              <td class="px-4 py-3">11</td>
+            </tr>
+            <tr data-sid="11_e" data-rank="16">
+              <td class="px-4 py-3 font-medium">11_e</td>
+              <td class="px-4 py-3">0.892</td>
+              <td class="px-4 py-3">0.097</td>
+              <td class="px-4 py-3">0.675</td>
+              <td class="px-4 py-3">16</td>
+            </tr>
+            <tr data-sid="0_p" data-rank="6">
+              <td class="px-4 py-3 font-medium">0_p</td>
+              <td class="px-4 py-3">0.557</td>
+              <td class="px-4 py-3">0.311</td>
+              <td class="px-4 py-3">0.796</td>
+              <td class="px-4 py-3">6</td>
+            </tr>
+            <tr data-sid="5_p" data-rank="5">
+              <td class="px-4 py-3 font-medium">5_p</td>
+              <td class="px-4 py-3">0.514</td>
+              <td class="px-4 py-3">0.306</td>
+              <td class="px-4 py-3">0.800</td>
+              <td class="px-4 py-3">5</td>
+            </tr>
+            <tr data-sid="9_p" data-rank="15">
+              <td class="px-4 py-3 font-medium">9_p</td>
+              <td class="px-4 py-3">0.646</td>
+              <td class="px-4 py-3">0.260</td>
+              <td class="px-4 py-3">0.767</td>
+              <td class="px-4 py-3">15</td>
+            </tr>
+            <tr data-sid="10_p" data-rank="14">
+              <td class="px-4 py-3 font-medium">10_p</td>
+              <td class="px-4 py-3">0.500</td>
+              <td class="px-4 py-3">0.171</td>
+              <td class="px-4 py-3">0.721</td>
+              <td class="px-4 py-3">14</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <script>
+        function sortFinalResults(mode) {
+          const tbody = document.getElementById('final-results-tbody');
+          const rows = Array.from(tbody.querySelectorAll('tr'));
+          const idBtn = document.getElementById('sort-id-btn');
+          const rankBtn = document.getElementById('sort-rank-btn');
+
+          if (mode === 'id') {
+            rows.sort((a, b) => {
+              const aSuffix = a.dataset.sid.split('_')[1];
+              const bSuffix = b.dataset.sid.split('_')[1];
+              if (aSuffix !== bSuffix) return aSuffix === 'e' ? -1 : 1;
+              return parseInt(a.dataset.sid) - parseInt(b.dataset.sid);
+            });
+            idBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg border transition-colors bg-blue-600 text-white border-blue-600';
+            rankBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg border transition-colors text-gray-700 border-gray-300 hover:bg-gray-50';
+          } else {
+            rows.sort((a, b) => {
+              const diff = parseInt(a.dataset.rank) - parseInt(b.dataset.rank);
+              if (diff !== 0) return diff;
+              const aNum = parseInt(a.dataset.sid);
+              const bNum = parseInt(b.dataset.sid);
+              return aNum - bNum;
+            });
+            rankBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg border transition-colors bg-blue-600 text-white border-blue-600';
+            idBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg border transition-colors text-gray-700 border-gray-300 hover:bg-gray-50';
+          }
+
+          rows.forEach(row => tbody.appendChild(row));
+        }
+      </script>
+    </section>
+
+    <!-- ===== Dry-run Results ===== -->
+    <section id="dry-run-results" class="space-y-6">
+      <header class="space-y-2">
+        <h2 class="text-4xl font-semibold">Dry-run Results</h2>
+        <p class="text-sm text-gray-600">De-identified result of the dry-run phase.</p>
+
+        <div class="text-sm text-gray-600 space-y-2 leading-relaxed">
+          <ul class="list-disc pl-6 space-y-1">
+            <li>Both FAD and CLAP are computed with the CLAP-Laion-Music checkpoint <code
+                class="px-1.5 py-0.5 bg-gray-100 rounded text-xs font-mono">music_audioset_epoch_15_esc_90.14.pt</code>.
+            </li>
+            <li>The reference set used for FAD in the dry-run phase is the Song Describer Dataset. Final evaluation
+              will use a hidden reference set.</li>
+            <li>Concept Coverage Score (CCS) is not presented during the dry-run phase.</li>
+          </ul>
+        </div>
+      </header>
+
+      <div class="rounded-xl border p-4 sm:p-5 overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b bg-gray-50">
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">Submission ID</th>
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">FAD↓</th>
+              <th scope="col" class="text-left px-4 py-3 font-semibold text-gray-700">CLAP↑</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr>
+              <td class="px-4 py-3 font-medium">0</td>
+              <td class="px-4 py-3">0.4040</td>
+              <td class="px-4 py-3">0.3231</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">1</td>
+              <td class="px-4 py-3">0.5455</td>
+              <td class="px-4 py-3">0.3244</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">2</td>
+              <td class="px-4 py-3">0.5181</td>
+              <td class="px-4 py-3">0.3100</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">3</td>
+              <td class="px-4 py-3">0.5547</td>
+              <td class="px-4 py-3">0.3176</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">4</td>
+              <td class="px-4 py-3">0.5127</td>
+              <td class="px-4 py-3">0.3092</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">5</td>
+              <td class="px-4 py-3">0.6583</td>
+              <td class="px-4 py-3">0.2742</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">6</td>
+              <td class="px-4 py-3">0.7164</td>
+              <td class="px-4 py-3">0.2119</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">7</td>
+              <td class="px-4 py-3">0.6461</td>
+              <td class="px-4 py-3">0.2642</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">8</td>
+              <td class="px-4 py-3">0.6364</td>
+              <td class="px-4 py-3">0.2598</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">9</td>
+              <td class="px-4 py-3">0.6890</td>
+              <td class="px-4 py-3">0.2200</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">10</td>
+              <td class="px-4 py-3">0.5003</td>
+              <td class="px-4 py-3">0.1950</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">11</td>
+              <td class="px-4 py-3">0.4998</td>
+              <td class="px-4 py-3">0.1866</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">12</td>
+              <td class="px-4 py-3">0.6516</td>
+              <td class="px-4 py-3">0.2807</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">13</td>
+              <td class="px-4 py-3">0.6711</td>
+              <td class="px-4 py-3">0.2827</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
